@@ -45,7 +45,11 @@ o funciones se eleven al comienzo de su ámbito antes de que se ejecute el códi
 
 */
 
+saludar("rames");
 
+function saludar(nombre) {
+  console.log("que deseas de cosito ? " + nombre);
+}
 
 
 
@@ -63,7 +67,34 @@ sintaxis:
     };
 */
 
+const darRegalo = function (nombre, regalo) {
+  console.log(`Felicidades ${nombre}, te traje ${regalo}`);
+};
 
+darRegalo("Romito", "sopa de macaco");
+
+
+/*
+ Realizar una función declarada que sume dos números 
+ y retorne el resultado.
+ 
+ Realizar una función expresada que reste dos números 
+ y retorne el resultado.
+ 
+*/
+
+sumarDosNumeros1(10, 35);
+
+function sumarDosNumeros1(numeroSumaUno, numeroSumaDos) {
+  console.log(` la suma de ${numeroSumaUno} y ${numeroSumaDos} da como resultado : ${numeroSumaUno + numeroSumaDos}`);
+}
+
+
+const restarDosNumeros = function (numeroRestaUno, numeroRestaDos) {
+  console.log(` la resta de ${numeroRestaUno} menos ${numeroRestaDos} da como resultado : ${numeroRestaUno + numeroRestaDos}`);
+};
+
+restarDosNumeros(35, 10);
 
 
 
@@ -77,8 +108,12 @@ sintaxis:
 
 */
 
-
-
+/*
+(function setUp() {
+  console.log("Configuracion inicial de la aplicacion");
+  console.log(`valor de data ${data}`);
+})(18)
+*/
 
 
 /*
@@ -98,8 +133,46 @@ sintaxis:
     }
 */
 
+// Realizar una función declarada que calcule al área de un triángulo
+// al función debe retornar el resultado.
+
+/*function areaTriangulo(base, altura) {
+    return (base * altura) / 2;
+}*/
+
+// const areaTriangulo = (base, altura) => (base * altura) / 2;
+
+// Función expresada (asignada a una variable)
+const areaTriangulo = function (base, altura) {
+  return (base * altura) / 2;
+};
+
+// Realizar una función flecha que calcule el área de un triángulo
+const calculaArea3 = (base, altura) => base * altura / 2;
+console.log(`Resultado usando arrow function: ${calculaArea3(12, 20)}`)
 
 
+// ¿Qué sucede si uso console.log como retorno?
+const imprimirArea = (base, altura) => console.log(calculaArea3(base, altura));
+imprimirArea(12, 20);
+
+
+
+
+// Realizar una función flecha que calcule el área de un círculo
+// Área = pi * radio^2
+// Usar una función flecha para imprimir el resultado en un párrafo id="area-circulo"
+
+// Arrow function to calculate circle area
+const calcularAreaCirculo = (radio) => Math.PI * Math.pow(radio, 2);
+
+
+
+
+const circleArea = (radio) => Math.PI * radio ** 2;
+const imprimirAreaCirculo = (radio) =>
+  document.getElementById("area-circulo").innerText = circleArea(radio);
+imprimirAreaCirculo(5);
 
 
 
@@ -111,7 +184,11 @@ Inicializa un parámetro de la función, si no se envía el argumento cuando se 
 
 */
 
+const saludarPersona = (nombre = "persona invitada") => console.log(` Hola ${nombre}, ya nos vamos a descansar`)
 
+saludarPersona(); // Hola undefined, ya nos vamos a descansar
+saludarPersona(); // Hola persona invitada, ya nos vamos a descansar
+saludarPersona("Mich"); // Hola Mich, ya nos vamos a descansar
 
 
 
@@ -125,4 +202,140 @@ Inicializa un parámetro de la función, si no se envía el argumento cuando se 
 
 
 
-  
+
+// Función principal que acepta un callback
+const imprimirMensaje = (fncCallBack) => {
+  fncCallBack("Hola Ch54");
+};
+
+// Primera llamada con console.log
+imprimirMensaje(console.log);
+
+// Función callback para mostrar en el párrafo
+const enviarAParrafo = (mensaje) => {
+  const saluda = "Hola, buen día";
+  const referencia = document.getElementById("saludo-callback");
+  if (referencia) {
+    referencia.textContent = `${saluda} ${mensaje}`;
+  } else {
+    console.error("No se encontró el elemento con ID 'saludo-callback'");
+  }
+};
+
+// Segunda llamada con nuestro callback personalizado
+imprimirMensaje(enviarAParrafo);
+
+
+
+
+
+
+/* 
+const imprimirMensaje = (fncCallBack) => fncCallBack("Hola Ch54");
+
+imprimirMensaje(console.log);
+
+const enviarAParrafo = (mensaje) => {
+  const saluda = "Hola, buen dia";
+  const referencia = document.getElementById("saludo-callback");
+  referencia.innerHTML = `${saluda} ${mensaje}`
+}
+
+imprimirMensaje(enviarAParrafo);
+
+imprimirMensaje(alert);
+
+*/
+
+
+
+
+/*
+  Realizar una función que sume dos numeros y que imprima
+  el resultado.
+   - inicialmente se imprimirá en la consola
+   - es posible que se te pida imprimir en el dom
+   - es posible que se te pida imprimir en un alert
+*/
+
+const sumarDosNumeros = (a, b) => a + b;
+
+const sumarEImprimir = (a, b, opcion) => {
+  const resultado = sumarDosNumeros(a, b);
+  const mensaje = `La suma de ${a} + ${b} es :  ${resultado} `;
+
+  // console.log(mensaje);
+
+  if (opcion === "consola") console.log(mensaje);
+  else if (opcion === "parrafo") document.getElementById("resultado-sumatoria").innerText = mensaje;
+  else if (opcion === "h2") document.getElementById("resultadoH2-sumatoria").innerText = mensaje;
+  else alert(mensaje);
+}
+
+sumarEImprimir(10, 14);
+
+sumarEImprimir(10, 14, "parrafo");
+
+const imprimirEnDOMParagraph = ( mensaje ) => {
+  const refParagraph = document.getElementById("resultado-sumatoria");
+  refParagraph.innerText = mensaje ;
+}
+
+const imprimirEnDOMH2 = ( mensaje ) => {
+  const refParagraph = document.getElementById("resultadoH2-sumatoria");
+  refParagraph.innerText = mensaje ;
+}
+
+
+sumarEImprimir( 10, 15, imprimirEnDOMParagraph );
+
+sumarEImprimir( 10, 16, imprimirEnDOMH2 );
+
+
+
+
+
+// -------------- Recursividad ---------------------
+/*
+  Una función recursiva es una función que se llama así misma durante su ejecución.
+
+  Se utilizan en algoritmos y soluciones que se basan en la división y conquista
+  como cálculos matemáticos, recorrido de estructura de datos y algoritmos de búsqueda
+  y ordenamiento.
+
+  Patrón:
+    function nombreFuncionRecursiva( parametro  ){
+        if( condicionParo){
+            return expresión;
+        }
+        else {
+            // llamada recursiva
+            nombreFuncionRecursiva( nuevoParametro );
+        }
+    }
+*/
+
+// Calcular el factorial de un número
+// factorial de 5: 5 * 4 * 3 * 2 * 1;
+function factorialConCicloFor( numero ) {
+    let factorial = 1;
+    for (let i=0; i < numero; i++) {
+      factorial *= (numero - i); // factorial = factorial * (numero - i);
+      console.log(`i: ${i}, factorial: ${factorial}, numero: ${numero - i}` );
+    }
+    return factorial;
+}
+console.log(`El factorial de 5 es: ${factorialConCicloFor(5)}`); // 120
+
+
+
+// calculando el factorial con recursividad
+
+function factorialConRecursividad( numero ){
+    console.log(`Resolviendo el factorial de ${numero}`);
+    if( numero <= 1  ) return 1 ;    
+    const result = factorialConRecursividad( numero - 1 ) * numero ;
+    console.log(`El factorial de ${numero} es ${result}`);
+    return result;
+}
+console.log(`Resultado final: ${ factorialConRecursividad(5)}`); // 120
