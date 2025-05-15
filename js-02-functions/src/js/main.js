@@ -339,3 +339,13 @@ function factorialConRecursividad( numero ){
     return result;
 }
 console.log(`Resultado final: ${ factorialConRecursividad(5)}`); // 120
+
+/*
+    parámetro   recursividad(n-1)   returnFnc
+    1            ----               1
+    2          2-1 = 1              2
+    3          3-1 = 2              6
+    4          4-1 = 3              24
+    5          5-1 = 4              120
+*/
+
