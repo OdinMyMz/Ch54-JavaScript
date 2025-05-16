@@ -42,7 +42,40 @@
 
 */
 
+/* 
+ Crear un arrow function que reciba el valor de edad.
+ Si la edad es mayor o igual a 18, la función debe
+ retornar el mensaje "Eres mayor de edad".
+ En caso contrario, retornar el mensaje "Eres menor de edad".
+ - Realizar la versión de if-else sin usar el bloque de código {}
+*/
 
+const verificarEdad = edad => edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad";
+
+console.log(verificarEdad(20));
+console.log(verificarEdad(15));
+console.log(verificarEdad(18));
+
+/*
+ Crear un arrow function que reciba el valor de edad.
+ Si la edad es mayor o igual a 18 y menor o igual a 30
+                 ( evalur con 18 Y(&&) evaluar con 30        )
+ la función debe retornar el mensaje "Tu luchador es Místico".
+ Si es mayor o igual a 31 el mensaje "Tu luchador es el perro Aguayo".
+ Si es menor a 18 el mensaje "Tu luchador es Penta"
+*/
+
+const asignarLuchador = edad =>
+    edad >= 18 && edad <= 30 ? "Tu luchador es Místico" :
+        edad >= 31 ? "Tu luchador es el perro Aguayo" :
+            "Tu luchador es Penta";
+
+console.log(asignarLuchador(15));
+console.log(asignarLuchador(18));
+console.log(asignarLuchador(25));
+console.log(asignarLuchador(30));
+console.log(asignarLuchador(31));
+console.log(asignarLuchador(45));
 
 
 //--------------- Condicional Switch --------------------------
@@ -74,6 +107,34 @@
 */
 
 
+const evaluarNombre = ( nombre ) => {
+    let resultado;
+    switch ( nombre){
+        case "Lua":
+            resultado = "Es de Abril";
+            break;
+        case "Borrego": 
+        case "Besito":
+        case "Fijól":
+        case "Paco":
+            resultado = "Es de Yessica";
+            break;
+        case "Milo":
+            resultado = "Es de Carlos";
+            break
+        case "Cuchara":
+            resultado = "Es de Ricardo";
+            break;
+        default:
+            resultado ="No se sabe de quién es";        
+    }
+    return resultado;
+}
+console.log( evaluarNombre("Lua") ); // Es de Abril
+console.log( evaluarNombre("Milo") ); // Es de Carlos
+console.log( evaluarNombre("Borrego") ); // Es de Jessica
+
+
 
 
 /**
@@ -86,7 +147,56 @@
  * Cualquier otro valor: Velocidad desconocida
  * @param {number} velocidad
  * @returns {string} mensaje
+
+ * Realizar dos versiones, una versión con switch y otra con if-else
  */
+
+const velocidadVentiladorSwitch = velocidad => {
+  switch(velocidad) {
+    case 0:
+      return "Apagado";
+    case 1:
+      return "Baja";
+    case 2:
+      return "Media";
+    case 3:
+      return "Alta";
+    default:
+      return "Velocidad desconocida";
+  }
+};
+
+const velocidadVentiladorIfElse = velocidad => {
+  if (velocidad === 0) {
+    return "Apagado";
+  } else if (velocidad === 1) {
+    return "Baja";
+  } else if (velocidad === 2) {
+    return "Media";
+  } else if (velocidad === 3) {
+    return "Alta";
+  } else {
+    return "Velocidad desconocida";
+  }
+};
+
+const velocidadVentiladorObjeto = velocidad => {
+  const velocidades = {
+    0: "Apagado",
+    1: "Baja",
+    2: "Media",
+    3: "Alta"
+  };
+  return velocidades[velocidad] || "Velocidad desconocida";
+};
+
+
+console.log(velocidadVentiladorSwitch(0));    // "Apagado"
+console.log(velocidadVentiladorIfElse(1));   // "Baja"
+console.log(velocidadVentiladorObjeto(2));   // "Media"
+console.log(velocidadVentiladorSwitch(3));    // "Alta"
+console.log(velocidadVentiladorIfElse(4));   // "Velocidad desconocida"
+
 
 
 
@@ -97,7 +207,7 @@
  Generalmente se utiliza como opción a la sentencia if-else.
 
  Sintaxis:
-  condición ? expresiónSiCondiciónEsVerdadera : expresionSiCondiciónEsFalsa; 
+  condición ? expresiónSiCondiciónEsVerdadera : expresionSiCondiciónEsFalsa;
 
 */
 
